@@ -56,4 +56,16 @@ def login_view(request):
 
     return render(request, 'login.html')
 
-    
+
+def student_biodata(request):
+    if request.method == 'POST':
+        dept=request.POST.get('dept')
+        age=request.POST.get('age')
+        gender=request.POST.get('gender')
+        mobile_no=request.POST.get('mobile_no')
+        stream=request.POST.get('stream')
+        biodata.objects.create(dept=dept ,age=age ,gender=gender ,mobile_no=mobile_no ,stream=stream)
+        return redirect('student_biodata')
+
+    biodatas=biodata.objects.all
+    return render(request,'biodata.html',{'biodatas': biodatas})

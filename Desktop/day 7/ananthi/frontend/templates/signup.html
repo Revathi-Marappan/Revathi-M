@@ -72,7 +72,17 @@
 <body>
     <div class="container">
         <h2>Sign Up</h2>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
         <form method="POST">
+            {% csrf_token %}
             <input type="text" name="username" placeholder="Username" required><br>
             <input type="email" name="email" placeholder="Email" required><br>
             <input type="password" name="password" placeholder="Password" required><br>
