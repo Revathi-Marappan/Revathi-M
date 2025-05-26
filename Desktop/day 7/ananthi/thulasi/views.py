@@ -69,3 +69,25 @@ def student_biodata(request):
 
     biodatas=biodata.objects.all
     return render(request,'biodata.html',{'biodatas': biodatas})
+
+
+def edit_biodata(request, pk):
+    biodatas = get_object_or_404(biodata, pk=pk)
+
+    if request.method == "POST":
+        biodatas.dept = request.POST.get("dept")
+        biodatas.age = request.POST.get("age")
+        biodatas.gender = request.POST.get("gender")
+        biodatas.save()
+        return redirect("biodatas-ui")
+
+    return render(request, "biodatasui.html", {
+        "edit_biodata": biodatas,
+        "biodatas": biodata.objects.all()
+    })
+
+
+def delete_biodata(request, pk): 
+    biodatas = get_object_or_404(biodata, pk=pk)
+    biodatas.delete()
+    return redirect("delete_biodata")
