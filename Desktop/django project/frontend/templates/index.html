@@ -10,7 +10,7 @@
     <h1>Diary Entries</h1>
         {% csrf_token %}
     <form method="POST">
-        <input type="char" name="name" placeholder="Name" required><br>
+        <input type="char" name="user" placeholder="User" required><br>
         <input type="number" name="date" placeholder="Date" required><br>
         <input type="number" name="time" placeholder="Time" required><br>
         <input type="char" name="mood" placeholder="Mood" required><br>
@@ -26,13 +26,17 @@
         <input type="char" name="mental_clarity" placeholder="Mental_clarity" required><br>
         <input type="char" name="gratitude_notes" placeholder="Gratitude_notes" required><br>
         <input type="char" name="self_care" placeholder="Self_care" required><br>
+        <button type="submit">Submit</button>
     </form>
 
     <h2>Mood Tracker List</h2>
     <ul>
         {% for MoodTracker in entries %}
-            <li>{{ MoodTracker.name }} - {{ MoodTracker.date }} - {{ MoodTracker.time }} - {{ MoodTracker.mood }} - {{ MoodTracker.mood_intensity }} - {{ MoodTracker.performance }} - {{ MoodTracker.performance_score }} - {{ MoodTracker.stress_level }} - {{ MoodTracker.energy_level }} - {{ MoodTracker.physical_health }} - {{ MoodTracker.activities }} - {{ MoodTracker.social_interaction }} - {{ MoodTracker.weather }} - {{ MoodTracker.mental_clarity }} - {{ MoodTracker.gratitude_notes }} - {{ MoodTracker.self_care }}</li> 
-    </ul>
+            <li>{{ MoodTracker.user }} - {{ MoodTracker.date }} - {{ MoodTracker.time }} - {{ MoodTracker.mood }} - {{ MoodTracker.mood_intensity }} - {{ MoodTracker.performance }} - {{ MoodTracker.performance_score }} - {{ MoodTracker.stress_level }} - {{ MoodTracker.energy_level }} - {{ MoodTracker.physical_health }} - {{ MoodTracker.activities }} - {{ MoodTracker.social_interaction }} - {{ MoodTracker.weather }} - {{ MoodTracker.mental_clarity }} - {{ MoodTracker.gratitude_notes }} - {{ MoodTracker.self_care }}</li> 
+    {% empty %}
+                <li>No Users yet.</li>
+            {% endfor %}
+        </ul>
 </div>
 </body>
 </html>

@@ -3,5 +3,5 @@ from . import *
 
 urlpatterns = [
     path('home/',homepage),
-    path('MoodTracker/', MoodTracker, name='MoodTracker'),
-]                
+    path('mood_tracker_list/', mood_tracker_list, name='mood_tracker_list'),
+]

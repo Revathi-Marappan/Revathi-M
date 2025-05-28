@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'quickdiarywithmoodify.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'pink',
+        'NAME': 'schema',
         'USER': 'root',
         'PASSWORD': 'reva0215',
         'HOST': 'localhost',
