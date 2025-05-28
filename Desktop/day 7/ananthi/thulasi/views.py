@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -78,10 +78,12 @@ def edit_biodata(request, pk):
         biodatas.dept = request.POST.get("dept")
         biodatas.age = request.POST.get("age")
         biodatas.gender = request.POST.get("gender")
+        biodatas.mobile_no = request.POST.get("mobile_no")
+        biodatas.stream = request.POST.get("stream")
         biodatas.save()
-        return redirect("biodatas-ui")
+        return redirect("edit_biodata")
 
-    return render(request, "biodatasui.html", {
+    return render(request, "edit.html", {
         "edit_biodata": biodatas,
         "biodatas": biodata.objects.all()
     })
